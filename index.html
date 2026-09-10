@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KEN mapping for W37 (August usage September file)</title>
+<style>
+:root{--card:#1e293b;--muted:#94a3b8;--text:#e2e8f0;--accent:#e60000;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:linear-gradient(135deg,#0f172a,#1e293b);color:var(--text);padding:28px;min-height:100vh}
+header{margin-bottom:24px}
+h1{font-size:26px;font-weight:700}
+.sub{color:var(--muted);margin-top:4px;font-size:14px}
+.badge{display:inline-block;background:var(--accent);color:#fff;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:700;margin-left:8px;vertical-align:middle}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px}
+.kpi{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.kpi-label{color:var(--muted);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.kpi-value{font-size:30px;font-weight:800;margin-top:6px}
+.kpi-sub{color:var(--muted);font-size:12px;margin-top:4px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border-radius:12px;padding:20px;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.card h3{font-size:15px;margin-bottom:16px;font-weight:700}
+.donut-wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap;justify-content:center}
+.legend{list-style:none;font-size:13px}
+.legend li{margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.dot{width:12px;height:12px;border-radius:3px;display:inline-block}
+.bar-row{display:grid;grid-template-columns:230px 1fr 110px;align-items:center;gap:10px;margin-bottom:12px}
+.bar-label{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{background:#0f172a;border-radius:6px;height:20px;overflow:hidden}
+.bar-fill{height:100%;border-radius:6px;transition:width .6s}
+.bar-val{font-size:13px;text-align:right;font-weight:700}
+.pct{color:var(--muted);font-weight:500;font-size:11px;margin-left:6px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid #334155}
+th:first-child,td.rowlbl{text-align:left}
+th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+td.tot{font-weight:700}
+tr:last-child td{border-top:2px solid #475569;font-weight:700}
+footer{margin-top:28px;color:var(--muted);font-size:12px;text-align:center}
+canvas{max-width:260px}
+.full{grid-column:1/-1}
+</style></head>
+<body>
+<header>
+  <h1>KEN mapping for W37 (August usage September file)<span class="badge">W37</span></h1>
+  <div class="sub">739,289 SIMs — Known / Unknown / To-be-updated</div>
+</header>
+<div class="kpis"><div class="kpi" style="border-top:4px solid #e60000">
+              <div class="kpi-label">Total SIMs</div>
+              <div class="kpi-value">739,289</div>
+              <div class="kpi-sub">3-way grouping</div>
+            </div><div class="kpi" style="border-top:4px solid #16a34a">
+              <div class="kpi-label">Known SIMs</div>
+              <div class="kpi-value">698,815</div>
+              <div class="kpi-sub">94.5%</div>
+            </div><div class="kpi" style="border-top:4px solid #f59e0b">
+              <div class="kpi-label">Unknown SIMs</div>
+              <div class="kpi-value">31,482</div>
+              <div class="kpi-sub">4.3%</div>
+            </div><div class="kpi" style="border-top:4px solid #2563eb">
+              <div class="kpi-label">To be updated in VF</div>
+              <div class="kpi-value">8,992</div>
+              <div class="kpi-sub">1.2%</div>
+            </div></div>
+<div class="grid">
+  <div class="card">
+    <h3>Distribution</h3>
+    <div class="donut-wrap">
+      <canvas id="donut" width="260" height="260"></canvas>
+      <ul class="legend" id="legend"></ul>
+    </div>
+  </div>
+  <div class="card">
+    <h3>IMSI Split-up</h3>
+    <div class="bar-row">
+            <div class="bar-label" title="20404">20404</div>
+            <div class="bar-track"><div class="bar-fill" style="width:100.0%;background:#e60000"></div></div>
+            <div class="bar-val">684,051<span class="pct">92.5%</span></div>
+        </div><div class="bar-row">
+            <div class="bar-label" title="90128">90128</div>
+            <div class="bar-track"><div class="bar-fill" style="width:8.1%;background:#7c3aed"></div></div>
+            <div class="bar-val">55,238<span class="pct">7.5%</span></div>
+        </div>
+  </div>
+  <div class="card full">
+    <h3>IMSI Split-up by Category</h3>
+    <table>
+      <thead><tr><th>IMSI prefix</th><th>Known</th><th>Unknown</th><th>To be updated</th><th>Total</th></tr></thead>
+      <tbody><tr><td class="rowlbl">20404</td><td>650,417</td><td>25,835</td><td>7,799</td><td class="tot">684,051</td></tr><tr><td class="rowlbl">90128</td><td>48,398</td><td>5,647</td><td>1,193</td><td class="tot">55,238</td></tr><tr><td class="rowlbl">Total</td><td class="tot">698,815</td><td class="tot">31,482</td><td class="tot">8,992</td><td class="tot">739,289</td></tr></tbody>
+    </table>
+  </div>
+</div>
+<footer>Generated from KEN_Grouped_W37.xlsx · KONE Connectivity 2.0</footer>
+<script>
+const data = [{"label": "Known SIMs", "count": 698815, "color": "#16a34a"}, {"label": "Unknown SIMs", "count": 31482, "color": "#f59e0b"}, {"label": "To be updated in VF portal", "count": 8992, "color": "#2563eb"}];
+const cv=document.getElementById('donut'),ctx=cv.getContext('2d');
+const cx=130,cy=130,r=100,ir=60,tot=data.reduce((s,d)=>s+d.count,0);
+let a=-Math.PI/2;
+data.forEach(d=>{const sl=d.count/tot*Math.PI*2;ctx.beginPath();ctx.moveTo(cx,cy);
+ctx.arc(cx,cy,r,a,a+sl);ctx.closePath();ctx.fillStyle=d.color;ctx.fill();a+=sl;});
+ctx.beginPath();ctx.arc(cx,cy,ir,0,Math.PI*2);ctx.fillStyle='#1e293b';ctx.fill();
+ctx.fillStyle='#e2e8f0';ctx.textAlign='center';ctx.font='bold 20px Segoe UI';
+ctx.fillText(tot.toLocaleString(),cx,cy-2);
+ctx.font='11px Segoe UI';ctx.fillStyle='#94a3b8';ctx.fillText('Total SIMs',cx,cy+16);
+const leg=document.getElementById('legend');
+data.forEach(d=>{const pct=(d.count/tot*100).toFixed(1);const li=document.createElement('li');
+li.innerHTML=`<span class="dot" style="background:${d.color}"></span>${d.label} — <b>${d.count.toLocaleString()}</b> (${pct}%)`;
+leg.appendChild(li);});
+</script>
+</body></html>
